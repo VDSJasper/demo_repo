@@ -1,0 +1,29 @@
+name: Conditional Example
+
+on:
+ workflow_dispatch:
+  inputs:
+   environment:
+    description: 'environment'
+    required: true
+    default: 'dev'
+    type: choice
+    options:
+     - dev
+     - stag
+     - prod
+
+jobs:
+ prod_deployment:
+  runs-on: ubuntu-latest
+  if: ${{ github.event.inputs.environment }} == prod
+  steps:
+   - name: deploy
+     run: echo "Deploying to production!"
+
+ test_deployment:
+  runs-on: ubuntu-latest
+  if: ${{ github.event.inputs.environment }} != prod
+  steps:
+   - name: deploy
+     run: echo "Running in testmode"
