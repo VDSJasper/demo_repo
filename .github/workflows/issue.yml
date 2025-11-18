@@ -2,8 +2,7 @@ name: Issues Example
 
 on:
  issues:
-  on:
-   create:
+  type: opened
  
 jobs:
  show-issue:
