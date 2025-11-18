@@ -9,21 +9,21 @@ on:
     default: 'dev'
     type: choice
     options:
-     - dev
-     - stag
-     - prod
+     - development
+     - staging
+     - production
 
 jobs:
  prod_deployment:
   runs-on: ubuntu-latest
-  if: ${{ github.event.inputs.environment }} == prod
+  if: ${{ github.event.inputs.environment == 'production' }}
   steps:
    - name: deploy
      run: echo "Deploying to production!"
 
  test_deployment:
   runs-on: ubuntu-latest
-  if: ${{ github.event.inputs.environment }} != prod
+  if: ${{ github.event.inputs.environment  == 'staging' || github.event.inputs.environment  == 'development' }}
   steps:
    - name: deploy
      run: echo "Running in testmode"
