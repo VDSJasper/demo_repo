@@ -1,0 +1,15 @@
+name: Issues Example
+
+on:
+ issues:
+  on:
+   create:
+ 
+jobs:
+ show-issue:
+  runs-on: ubuntu-latest
+  steps:
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number 
