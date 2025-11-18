@@ -10,7 +10,7 @@ jobs:
    - name: copy OS info
      run: uname -a > output.txt
    - name: verification of file
-     run: echo output.txt
+     run: cat output.txt
    - name: verification of mapping
      run: ls -alhR
 
