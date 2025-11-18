@@ -1,0 +1,17 @@
+name: Steps Example
+on: 
+ workflow_dispatch:
+jobs:
+ example:
+  runs-on: ubuntu-latest
+  steps:
+   - name: create dir
+     run: mkdir testmachine
+   - name: copy OS info
+     run: uname -a > output.txt
+   - name: verification of file
+     run: echo output.txt
+   - name: verification of mapping
+     run: ls -alhR
+
+ 
