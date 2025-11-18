@@ -2,13 +2,14 @@ name: Issues Example
 
 on:
  issues:
-  type: opened
+  type: [opened]
  
 jobs:
- show-issue:
+ log-issue:
   runs-on: ubuntu-latest
   steps:
-      - run: |
-          echo A comment on issue $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.number }}
+    - name: Log issue title
+      run: echo ${{ github.event.issue.title }}
+      
+    - name: Log issue body
+      run: echo ${{ github.event.issue.body }}
